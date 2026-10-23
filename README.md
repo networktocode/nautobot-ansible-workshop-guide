@@ -92,17 +92,17 @@ graph LR
 
 ---
 
-## The four hours
+## The three and a half hours
 
 | Time | What |
 | --- | --- |
-| 9:00–9:15 | **Cold open** — onboard a site the painful way |
-| 9:15–9:55 | **Lab 1** — Nautobot as your inventory |
-| 9:55–10:45 | **Lab 2** — variables and intent |
-| 10:45–11:15 | **Break** |
-| 11:15–11:55 | **Lab 3** — execute, and write state back |
-| 11:55–12:40 | **Lab 4** — event-driven, with an approval gate |
-| 12:40–13:00 | When NOT to use AWX · wrap and Q&A |
+| 0:00–0:15 | **Cold open** — onboard a site the painful way |
+| 0:15–0:55 | **Lab 1** — Nautobot as your inventory |
+| 0:55–1:35 | **Lab 2** — variables and intent |
+| 1:35–1:50 | **Break** |
+| 1:50–2:35 | **Lab 3** — execute, and write state back |
+| 2:35–3:20 | **Lab 4** — event-driven, with an approval gate |
+| 3:20–3:30 | Wrap and Q&A |
 
 1. [Lab 0 — Cold open](./lab0-cold-open.md)
 2. [Lab 1 — Nautobot as inventory](./lab1-inventory.md)
@@ -124,7 +124,7 @@ Each lab then ends with **stretch goals** — several of them, harder, if you fi
 
 **Raise a hand.** There are proctors in the room, and being stuck for five minutes is five minutes not spent learning.
 
-If your environment gets into a bad state, a proctor can **reset you to the start of any lab** in a minute or two — you won't lose your place in the session. Just ask; it's a normal thing to do, not a failure.
+If your environment gets into a bad state, a proctor can reset you to the start of any lab in a minute or two — you won't lose your place in the session. Just ask; it's a normal thing to do, not a failure.
 
 ---
 
