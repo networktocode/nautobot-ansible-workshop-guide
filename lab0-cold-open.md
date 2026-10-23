@@ -38,7 +38,11 @@ Don't take the job's word for it. 💻 **In your terminal**, log in to `leaf1` �
 ssh admin@172.20.20.11
 ```
 
-You're now on an Arista switch. Show just the lines the job added:
+You're now on an Arista switch. Enter privileged mode first — the prompt changes from `leaf1>` to `leaf1#` — then show just the lines the job added:
+
+```
+enable
+```
 
 ```
 show running-config | include ntp|name-server|snmp-server|logging host
@@ -56,7 +60,11 @@ ssh admin@172.20.20.12
 
 You typed six values into a form.
 
-**Every single one of them is already recorded in Nautobot.** Open it and look at [`http://localhost:8001`](http://localhost:8001), logging in as `admin` / `admin`. The site is there. The devices are there. The NTP servers are there.
+Every single one of them is already recorded in Nautobot. Open it and look at [`http://localhost:8001`](http://localhost:8001), logging in as `admin` / `admin`. The site is there. The devices are there. The NTP servers are there as config context.
+
+![image.png](assets/28eb54640bbc155c627103fe7517d6c0c38db7e20ad57b26184c853c6623b67c.png)
+
+![image.png](assets/6e621607839bc9ece63735db11a05d43ca457d17571bb6011da6e59960b73390.png)
 
 So you just hand-copied data from a system of record into a form to configure devices that the same system of record already knows about.
 
@@ -64,7 +72,7 @@ So you just hand-copied data from a system of record into a form to configure de
 
 - What happens when the NTP servers change? Who updates the survey defaults?
 - What if you'd typed `10.0.0.11` instead of `10.0.0.1`? What would have caught it?
-- Where does `leaf1`'s IP address come from? Have a look at `inventory/static.ini` in the project repo — someone maintains that by hand.
+- Where does `leaf1`'s IP address come from? Check inventory/static.ini in the project repo; someone maintains it by hand.
 - It's six fields for two devices. What does it look like for forty devices and a dozen fields?
 
 **Nothing here is broken.** That's the uncomfortable part. This setup is automated; it's in version control; it runs from an orchestrator with logs and RBAC. It's better than most.
@@ -81,7 +89,7 @@ Over the next three and a half hours, you'll take that apart piece by piece:
 | **1** | The static inventory file. Nautobot becomes the inventory. |
 | **2** | The survey and `group_vars`. Nautobot supplies the variables. |
 | **3** | The one-way street. Devices start writing state *back* to Nautobot. |
-| **4** | The manual launch. A change in Nautobot triggers automation — behind an approval gate. |
+| **4** | The manual launch. A change in Nautobot triggers automation behind an approval gate. |
 **The playbook itself never changes.** Not once, in any of the four labs. That's the point: this isn't about rewriting your automation; it's about connecting it to what you already know.
 
 ---
