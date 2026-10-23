@@ -30,6 +30,26 @@ A new site is coming online. Two switches, `leaf1` and `leaf2`, need base config
 
 It works. Both devices are configured.
 
+## Check it on the devices
+
+Don't take the job's word for it. 💻 **In your terminal**, log in to `leaf1` — the password is `admin`:
+
+```bash
+ssh admin@172.20.20.11
+```
+
+You're now on an Arista switch. Show just the lines the job added:
+
+```
+show running-config | include ntp|name-server|snmp-server|logging host
+```
+
+You should see the values you typed into the survey: two NTP servers, the DNS server, the SNMP community and the syslog host. Type `exit` to leave, then do the same on `leaf2`:
+
+```bash
+ssh admin@172.20.20.12
+```
+
 ---
 
 ## Now think about what just happened
