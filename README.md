@@ -7,7 +7,9 @@ Welcome to this workshop, where we explore how Nautobot and Ansible can coexist,
 You are going to have access to two repositories:
 - [`nautobot-ansible-workshop-guide` ](https://github.com/networktocode/nautobot-ansible-workshop-guide.git)This is the current repository and has all the steps that you are going to follow as part of the workshop. Start here, review the README, and it will take you to each lab.
 - [`nautobot-ansible-workshop`](https://github.com/networktocode/nautobot-ansible-workshop.git) This repository has all the files that are used in the different labs; we will explore it in detail as we move along.
+
 ---
+
 **Getting access to the lab**
 
 Everything you need is already running. You will not install anything. You will receive a URL and a set of credentials for your lab environment. Use those in your browser to access the virtual machine with everything you need. You should see the desktop of the virtual machine like this:
@@ -15,6 +17,7 @@ Everything you need is already running. You will not install anything. You will 
 > The URL/IP in the image is just an example to show you how your browser is going to look like when you get there. But, you are going to receive your own address.
 
 From this desktop you will be able to use Firefox to navigate to both Nautobot and AWX and on the bar at the bottom you can access a terminal.
+
 ---
 
 ## You'll work in three places
