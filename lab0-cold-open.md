@@ -90,6 +90,7 @@ Over the next three and a half hours, you'll take that apart piece by piece:
 | **2** | The survey and `group_vars`. Nautobot supplies the variables. |
 | **3** | The one-way street. Devices start writing state *back* to Nautobot. |
 | **4** | The manual launch. A change in Nautobot triggers automation behind an approval gate. |
+
 **The playbook itself never changes.** Not once, in any of the four labs. That's the point: this isn't about rewriting your automation; it's about connecting it to what you already know.
 
 ---
