@@ -1,8 +1,8 @@
 # Lab 2 — Variables and intent
 
-**40 minutes.** Goal: delete `group_vars`, and let Nautobot hold the variables — validated, and fetched in a single query.
+**40 minutes.** Goal: delete `group_vars` and let Nautobot hold the variables validated and fetched in a single query.
 
-**By the end** you'll have deleted the last local copy of your device data, watched Nautobot reject a bad value before it could reach a device, and rendered a full config from one GraphQL query.
+By the end, you'll have deleted the last local copy of your device data, watched Nautobot reject a bad value before it could reach a device, and rendered a full config from one GraphQL query.
 
 > **Where you'll be working.** 🤖 Nautobot · 💻 Terminal, and ⚙️ AWX for the last step only — every step below says which. Almost everything here is about what the source of truth knows, before an orchestrator is involved.
 
@@ -16,11 +16,13 @@
 cd ~/nautobot-ansible-workshop && cat inventory/group_vars/leaf.yml
 ```
 
-NTP servers, DNS, SNMP community, syslog host. **These are the same six values you typed into the survey in Lab 0.** Third copy, if you're counting: survey, file, and — as you're about to see — Nautobot.
+NTP servers, DNS, SNMP community, syslog host. These are the same six values you typed into the survey in Lab 0**.** Third copy, if you're counting: survey, file, and, as you're about to see, Nautobot.
 
 🤖 Now open Nautobot → **Extensibility → Config Contexts** → `leaf-base`.
 
-Same keys, same values. But note the **scope**: it applies to devices with role `leaf`. It isn't attached to a device — it's attached to a *rule*. Any new leaf gets it automatically.
+![image.png](assets/93c98c3463994a457a7c2968f5fd91ff62f8e479ff6bb7fb322751f26e3b2d8e.png)
+
+Same keys, same values. But note the scope: it applies to devices with role `leaf`. It isn't attached to a device, it's attached to a *rule*. Any new leaf gets it automatically.
 
 ## 2b. 💻 Terminal — it's already reaching your playbook
 
@@ -30,19 +32,19 @@ ansible-inventory -i inventory/nautobot.yml --host leaf1 | jq '.ntp_servers'
 
 Those came from Nautobot, not from the file. The inventory plugin pulls Config Contexts and puts the keys directly onto the host.
 
-**So right now you have two sources saying the same thing** — and Nautobot is already winning, because inventory data outranks `group_vars`.
+So right now you have two sources saying the same thing, and Nautobot is already winning, because inventory data outranks `group_vars`.
 
 ## 2c. 💻 Terminal — delete the local copy
 
 ```bash
-git rm inventory/group_vars/leaf.yml
+rm inventory/group_vars/leaf.yml
 ```
 
 ```bash
 ansible-playbook -i inventory/nautobot.yml playbooks/configure_base.yml -u admin -k --check --diff
 ```
 
-Same result. **Same playbook, same template, no `group_vars` at all.**
+Same result. Same playbook, same template, no `group_vars` at all.
 
 > `inventory/group_vars/all.yml` stays — that's connection plumbing (`ansible_connection`, `ansible_become`), which is Ansible mechanics rather than anything about your network. Different kind of thing, different home.
 
