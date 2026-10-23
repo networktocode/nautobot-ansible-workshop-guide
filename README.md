@@ -13,6 +13,8 @@ You are going to have access to two repositories:
 Everything you need is already running. You will not install anything. You will receive a URL and a set of credentials for your lab environment. Use those in your browser to access the virtual machine with everything you need. You should see the desktop of the virtual machine like this:
 ![image.png](assets/11223e07b042dda8d6c1e5d0e1855ed6dde0179f36994d4f3b21b27016fc1ad2.png)
 > The URL/IP in the image is just an example to show you how your browser is going to look like when you get there. But, you are going to receive your own address.
+
+From this desktop you will be able to use Firefox to navigate to both Nautobot and AWX and on the bar at the bottom you can access a terminal.
 ---
 
 ## You'll work in three places
@@ -20,21 +22,19 @@ Everything you need is already running. You will not install anything. You will 
 Keep all three open. Every step in every lab is labeled with which one it means, so you never have to guess where to click or type.
 | Icon | What it is | Where |
 | --- | --- | --- |
-| 🤖 **NAUTOBOT** | Browser tab. The source of truth — devices, IPs, variables, intent. | `https://NN.DOMAIN/nautobot` |
-| ⚙️ **AWX** | Browser tab. The orchestration layer — job templates, inventories, workflows. | `https://NN.DOMAIN/awx` |
-| 💻 **TERMINAL** | SSH session. Runs `ansible-playbook` and `ansible-inventory` by hand. | see below |
+| 💻 **TERMINAL** | Terminal window on the desktop. Runs `ansible-playbook` and `ansible-inventory` by hand. | The bar at the bottom of the desktop |
+| 🤖 **NAUTOBOT** | Browser tab. The source of truth — devices, IPs, variables, intent. | `http://localhost:8001` |
+| ⚙️ **AWX** | Browser tab. The orchestration layer — job templates, inventories, workflows. | `http://localhost:8013` |
 
 **🤖 is Nautobot's own robot, ⚙️ is the machinery that runs things, 💻 is your shell.** Once you have those three, you never need to read a step twice to work out where it happens.
 
-Open the terminal with:
+**Open a terminal window from the bar at the bottom of the desktop.** It runs on the same machine as Nautobot and AWX, so there is nothing to connect to — the lab repo, Ansible, and the settings below are already there. Start every lab from the repo:
 
+```bash
+cd ~/nautobot-ansible-workshop
 ```
-ssh admin@DOMAIN -p 22NN
-```
 
-Your attendee number is on your card. Wherever you see `NN`, use it.
-
-> **Why a terminal at all, when AWX can run everything?** Because seeing the same playbook work from both places is the point. The terminal shows you *what* is happening; AWX shows you the same thing with credentials, logging and RBAC wrapped around it. **The playbook never changes between them.**
+> **Why a terminal at all, when AWX can run everything?** Because seeing the same playbook work from both places is the point. The terminal shows you *what* is happening; AWX shows you the same thing with credentials, logging and RBAC wrapped around it. The playbook never changes between them.
 
 **Two browser tabs, one terminal.** You'll switch between them constantly — a lab will typically change something in Nautobot, prove it from the terminal, then show the same result in AWX.
 
@@ -47,7 +47,6 @@ Your attendee number is on your card. Wherever you see `NN`, use it.
 | Nautobot | `admin` | `admin` |
 | AWX | `admin` | `admin` |
 | Devices (`leaf1`, `leaf2`) | `admin` | `admin` |
-| SSH | `admin` | `admin` |
 Nothing to look up, nothing to remember; you can navigate freely between the different tools.
 
 Already set for you in the terminal, so most commands just work:
