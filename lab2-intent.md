@@ -4,7 +4,7 @@
 
 **By the end** you'll have deleted the last local copy of your device data, watched Nautobot reject a bad value before it could reach a device, and rendered a full config from one GraphQL query.
 
-> **Where you'll be working.** 🤖 Nautobot · 💻 Terminal — every step below says which. **No AWX in this lab**, which is itself the point: everything here is about what the source of truth knows, and it is all true before an orchestrator is involved.
+> **Where you'll be working.** 🤖 Nautobot · 💻 Terminal, and ⚙️ AWX for the last step only — every step below says which. Almost everything here is about what the source of truth knows, before an orchestrator is involved.
 
 ---
 
@@ -142,6 +142,16 @@ ansible-playbook -i inventory/nautobot.yml playbooks/diff_intent.yml -u admin -k
 The new line appears in the diff.
 
 **Nothing was pushed.** Check mode is the default here — you're seeing what *would* change. You changed your mind in the source of truth, and the gap between intent and reality became visible immediately.
+
+## 2h. ⚙️ AWX — the same job, without the survey
+
+The values now live in Nautobot, so the survey from Lab 0 has nothing left to do.
+
+1. **Resources → Templates → `Onboard Site (survey)`**
+2. Open the **Survey** tab and switch the survey **off**
+3. **Launch** 🚀 — no form this time
+
+Read the job output: it pushes `ntp server 10.0.0.3` to both devices, the server you added in Nautobot in 2g. Nobody typed it. The same job template that needed six values in Lab 0 now gets them from the source of truth.
 
 ---
 
