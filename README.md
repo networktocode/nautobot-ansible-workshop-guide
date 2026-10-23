@@ -141,4 +141,4 @@ If your environment gets into a bad state, a proctor can reset you to the start 
 Everything you build today is in a repository you keep and it includes the notes you'd need to rebuild this environment yourself. We have prepared an environment that is ready for you to start experimenting and learning but there is nothing there that you could not replicate on your own. We come back to it at the [end of Lab 4](./lab4-approval.md).
 
 ## Next step
-Your are ready to start working. Jump to [lab0-cold-open.md](nautobot-ansible-workshop-guide/lab0-cold-open.md)  and start working your way through. Good luck and have fun!
+You are ready to start working. Jump to [Lab 0 — Cold open](./lab0-cold-open.md) and start working your way through. Good luck and have fun!
