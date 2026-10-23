@@ -1,0 +1,42 @@
+# nautobot-ansible-workshop-guide — attendee-facing lab guide.
+#
+# This repository is bound for public release: attendees are given it, and it
+# is read as Network to Code's work product. Everything below is either noise
+# that would look careless in a public repo, or something that must never
+# reach one at all.
+
+# ---------------------------------------------------------------- OS / editor
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --------------------------------------------------------- AI / session files
+# Deliberate, and a rule rather than a preference: CLAUDE.md, .claude/ and the
+# session artifacts live ONE LEVEL UP, in the container directory that holds
+# all three workshop repos. They describe how the workshop is *built* — which
+# is confusing at best in a public repo, and is also the only way a single
+# file can keep the cross-repo rules consistent. Ignored here so the rule
+# cannot be broken by accident.
+CLAUDE.md
+.claude/
+nimbalyst-local/
+*.plan.md
+
+# --------------------------------------------------------------------- secrets
+# Nothing in this repo should ever hold a credential — the workshop's static
+# `admin`/`admin` literals are deliberate and documented, and everything else
+# belongs in nautobot-ansible-workshop-instructor. These patterns are a
+# backstop, not a licence to add one.
+.env
+.env.*
+*.token
+*.pem
+*.key
+secrets.yml

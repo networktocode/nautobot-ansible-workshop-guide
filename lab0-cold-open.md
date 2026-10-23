@@ -1,9 +1,5 @@
 # Lab 0 — Cold open
 
-**15 minutes.** No slides. Hands on the keyboard by minute three.
-
----
-
 ## The situation
 
 You run Ansible. It works. You have AWX, job templates, and playbooks in Git, all of it working.
