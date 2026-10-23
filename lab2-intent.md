@@ -54,7 +54,7 @@ A file can hold anything. A source of truth can refuse.
 
 🤖 **Extensibility → Config Context Schemas** → `leaf-base-schema`. It's JSON Schema: `ntp_servers` must be an array of at least one IPv4 string.
 
-**Try to break it.** Edit the `leaf-base` Config Context and change:
+Try to break it. Edit the `leaf-base` Config Context and change:
 
 ```json
 "ntp_servers": ["10.0.0.1", "10.0.0.2"]
@@ -66,9 +66,11 @@ to a plain string:
 "ntp_servers": "10.0.0.1"
 ```
 
-Save. **Nautobot rejects it.**
+Save. Nautobot rejects it.
 
-That's the part worth pausing on. In Lab 0 the same mistake would have been typed into a survey, accepted without comment, and pushed to a device. Here it never leaves the source of truth.
+![image.png](assets/0a89c2665dd48921b970310d561c3bb508e5531fe24589cf96d3ea1d3e82a744.png)
+
+That's the part worth pausing on. In Lab 0, you'd have typed the same mistake into a survey, accepted it without comment, and pushed it to a device. Here it never leaves the source of truth.
 
 Put it back the way it was.
 
@@ -78,7 +80,7 @@ So far you've been getting variables. But a device is more than variables — it
 
 Nautobot ships an interactive query browser called **GraphiQL**.
 
-**Look at the very bottom of the Nautobot window.** There's a thin toolbar of icons — hover them and you'll find **Theme · Docs · Jinja Renderer · API · GraphQL · Code · Help**. Click the **GraphQL** one.
+Look at the very bottom of the Nautobot window. There's a thin toolbar of icons; hover over them, and you'll find Theme · Docs · Jinja Renderer · API · GraphQL · Code · Help. Click the GraphQL one.
 
 > It's icon-only with tooltips, and easy to scroll past. Those seven are worth knowing about generally — **Jinja Renderer** and **API** are genuinely useful, and none of them are in the left-hand navigation.
 
@@ -99,9 +101,9 @@ query {
 }
 ```
 
-**One request.** With the REST API that's a device call, then a role call, then a platform call, then interfaces, then IPs for each. Here it's one round trip returning exactly the shape you asked for.
+One request. With the REST API, that's a device call, then a role call, then a platform call, then interfaces, then IPs for each. Here, it's one round trip that returns exactly the shape you asked for.
 
-> **Saved queries live elsewhere** — Nautobot → **Extensibility → GraphQL Queries**, under *Data Management*. That's where `device_intent` is stored, the one `render_intent.yml` uses in the next step. GraphiQL is for exploring; a saved query is for automation to call by name.
+> Saved queries live elsewhere — Nautobot → **Extensibility → GraphQL Queries**, under *Data Management*. That's where `device_intent` is stored, the one `render_intent.yml` uses in the next step. GraphiQL is for exploring; a saved query is for automation to call by name.
 
 ## 2f. 💻 Terminal — render a config from it
 
@@ -129,13 +131,13 @@ Password: `admin`
 
 Probably: `NO DRIFT — device matches Nautobot intent`. Correct, but dull.
 
-**So create some drift — in Nautobot.** Edit the `leaf-base` Config Context and add a third NTP server:
+So create some drift in Nautobot. Edit the `leaf-base` Config Context and add a third NTP server:
 
 ```json
 "ntp_servers": ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
 ```
 
-Re-run the **exact same command**:
+Re-run the exact same command:
 
 ```bash
 ansible-playbook -i inventory/nautobot.yml playbooks/diff_intent.yml -u admin -k --diff
@@ -143,17 +145,37 @@ ansible-playbook -i inventory/nautobot.yml playbooks/diff_intent.yml -u admin -k
 
 The new line appears in the diff.
 
-**Nothing was pushed.** Check mode is the default here — you're seeing what *would* change. You changed your mind in the source of truth, and the gap between intent and reality became visible immediately.
+Nothing was pushed. Check mode is the default here — you're seeing what *would* change. You changed your mind in the source of truth, and the gap between intent and reality became visible immediately.
 
 ## 2h. ⚙️ AWX — the same job, without the survey
 
-The values now live in Nautobot, so the survey from Lab 0 has nothing left to do.
+The values now live in Nautobot, so the Lab 0 survey has nothing left to do.
 
 1. **Resources → Templates → `Onboard Site (survey)`**
 2. Open the **Survey** tab and switch the survey **off**
 3. **Launch** 🚀 — no form this time
 
+![image.png](assets/b91620e16f1117c01ad86cc930d34711b67eab86199718641467cd1af8a17492.png)
+
 Read the job output: it pushes `ntp server 10.0.0.3` to both devices, the server you added in Nautobot in 2g. Nobody typed it. The same job template that needed six values in Lab 0 now gets them from the source of truth.
+
+💻 **Check it on the device**, as you did in Lab 0. The password is `admin`:
+
+```bash
+ssh admin@172.20.20.11
+```
+
+```
+enable
+```
+
+```
+show running-config | include ntp
+```
+
+Three NTP servers now, where Lab 0 left two. The third, `10.0.0.3`, exists only in Nautobot: you never typed it into a survey or a file. Type `exit` to leave.
+
+Run the 2g diff again, and it's back to `NO DRIFT`: the device and the source of truth agree.
 
 ---
 
@@ -166,7 +188,7 @@ Read the job output: it pushes `ntp server 10.0.0.3` to both devices, the server
 | Many API calls to assemble a device | One GraphQL query |
 | "Is the device right?" — unknown | A diff, on demand |
 
-**Two of the three copies are gone.** Lab 3 reverses the flow entirely.
+Two of the three copies are gone. Lab 3 reverses the flow entirely.
 
 ---
 
