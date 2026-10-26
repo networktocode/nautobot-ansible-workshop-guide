@@ -16,7 +16,7 @@ By the end, you'll have deleted the last local copy of your device data, watched
 cd ~/nautobot-ansible-workshop && cat inventory/group_vars/leaf.yml
 ```
 
-NTP servers, DNS, SNMP community, syslog host. These are the same six values you typed into the survey in Lab 0**.** Third copy, if you're counting: survey, file, and, as you're about to see, Nautobot.
+NTP servers, DNS, SNMP community, syslog host. These are the same six values you typed into the survey in Lab 0. Third copy, if you're counting: survey, file, and, as you're about to see, Nautobot.
 
 🤖 Now open Nautobot → **Extensibility → Config Contexts** → `leaf-base`.
 
