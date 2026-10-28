@@ -114,17 +114,15 @@ graph LR
 
 ## How the labs are written
 
-**One path through each lab, lettered a, b, c… — follow it in order.** Every step says which of the three places above it happens in, and every command and value is printed in full. You should never have to look anything up or guess.
+One path through each lab, lettered a, b, c… Follow all the steps of each lab in order. Every step says which of the three places above it happens in, and every command and value is printed in full. You should never have to look anything up or guess.
 
-Each lab then ends with **stretch goals** — several of them, harder, if you finish early and want to explore more on your own. They are genuinely optional. Nothing later depends on them, and you can come back after the session.
+Each lab then ends with stretch goals. Several of stretch goals are harder, if you finish early and want to explore more on your own. They are genuinely optional. Nothing later depends on them, and you can come back after the session.
 
-**Everything is pre-built.** You change settings — flip a dropdown, edit a field, press a button. You never have to write a file from scratch or push to git. That's deliberate: it keeps the session about the *ideas*, not about typing.
+Everything is pre-built. You change settings: flip a dropdown, edit a field, press a button. You never have to write a file from scratch or push to git. That's deliberate: it keeps the session about the *ideas*, not about typing.
 
 ## If you get stuck
 
-**Raise a hand.** There are proctors in the room, and being stuck for five minutes is five minutes not spent learning.
-
-If your environment gets into a bad state, a proctor can reset you to the start of any lab in a minute or two — you won't lose your place in the session. Just ask; it's a normal thing to do, not a failure.
+Raise a hand. There are proctors in the room, and being stuck for five minutes is five minutes not spent learning.
 
 ---
 

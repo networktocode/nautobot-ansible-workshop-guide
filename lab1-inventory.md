@@ -189,7 +189,7 @@ ansible-doc -t inventory networktocode.nautobot.inventory
 
 ## Stuck?
 
-Ask a proctor — they can reset you to the start of any lab in a minute or two.
+Raise a hand and a proctor will come over.
 
 | Symptom | Likely cause |
 | --- | --- |
