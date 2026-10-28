@@ -2,7 +2,7 @@
 
 **45 minutes.** Goal: reverse the flow. Until now, everything moved Nautobot → device. Now the device tells Nautobot what's actually true.
 
-**By the end,** you'll have launched automation from a device page in Nautobot, written discovered state back into the source of truth, and found the change log entry naming the job that caused it.
+By the end, you'll have launched automation from a device page in Nautobot, written discovered state back into the source of truth, and found the change log entry naming the job that caused it.
 
 > **Where you'll be working.** 🤖 Nautobot · 💻 Terminal · ⚙️ AWX — every step below says which. This is the most Nautobot-heavy lab; you'll only need AWX to watch what Nautobot launched.
 
@@ -16,15 +16,15 @@ Everything so far started in a terminal or in AWX. But the person who wants a de
 
 ![image.png](assets/02118f87357247e141e089f3d62169b29ca43412b6ca24f7a1cdf881d5dde77b.png)
 
-Follow the "**Job equeue. Cllick here for the results**" link at the top left of the page.
+Follow the "**Job equeued. Click here for the results**" link at the top left of the page.
 
-You'll land on a **Job Result** page. Read the log — it looks the template up by name, posts to AWX, and prints the AWX job ID and a link.
+You'll land on a **Job Result** page. Read the log — it looks up the template by name, posts to AWX, and prints the AWX job ID and a link.
 
 ⚙️ **Follow the link.** It takes you into AWX. That's a real AWX job, launched from Nautobot, targeting the device whose page you were on, and it ran on AWX's own infrastructure, not in your terminal.
 
 ## 3b. 🤖 Nautobot — what that button actually is
 
-Not a hyperlink. It ran a **Nautobot Job** — server-side Python, with the full Nautobot ORM available.
+Not a hyperlink. It ran a Nautobot Job, server-side Python with the full Nautobot ORM available.
 
 That distinction matters, and it's worth knowing before the closing segment:
 
