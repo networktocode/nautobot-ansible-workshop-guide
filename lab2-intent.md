@@ -129,9 +129,12 @@ ansible-playbook -i inventory/nautobot.yml playbooks/diff_intent.yml -u admin -k
 
 Password: `admin`
 
-Probably: `NO DRIFT — device matches Nautobot intent`. Correct, but dull.
+Each device already shows `3 line(s) would change`. That's expected. The full config covers more than the Lab 0 job did:
 
-So create some drift in Nautobot. Edit the `leaf-base` Config Context and add a third NTP server:
+- `interface Ethernet1` and `description to leaf2 Ethernet1` (or `to leaf1` on `leaf2`): Nautobot records the link between the two switches, and Lab 0 never pushed interface descriptions.
+- `ip name-server 10.0.0.53`: the DNS server is already set; the device stores the line in a slightly different form from the template, so it shows up as a difference.
+
+Note those three lines, then create some drift of your own in Nautobot. Edit the `leaf-base` Config Context and add a third NTP server:
 
 ```json
 "ntp_servers": ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
@@ -143,7 +146,7 @@ Re-run the exact same command:
 ansible-playbook -i inventory/nautobot.yml playbooks/diff_intent.yml -u admin -k --diff
 ```
 
-The new line appears in the diff.
+A fourth line appears in the diff: `ntp server 10.0.0.3`.
 
 Nothing was pushed. Check mode is the default here — you're seeing what *would* change. You changed your mind in the source of truth, and the gap between intent and reality became visible immediately.
 
@@ -174,8 +177,6 @@ show running-config | include ntp
 ```
 
 Three NTP servers now, where Lab 0 left two. The third, `10.0.0.3`, exists only in Nautobot: you never typed it into a survey or a file. Type `exit` to leave.
-
-Run the 2g diff again, and it's back to `NO DRIFT`: the device and the source of truth agree.
 
 ---
 

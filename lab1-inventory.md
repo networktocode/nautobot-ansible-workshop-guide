@@ -140,7 +140,7 @@ It asks Nautobot who's in the group, then acts on exactly those devices.
 ansible-playbook -i inventory/nautobot.yml playbooks/target_dynamic_group.yml -e dynamic_group_name="leaf-devices-dc1" -u admin -k
 ```
 
-This time it runs on `leaf1` only. **You didn't touch Ansible, the playbook, or AWX.** You changed your mind in the source of truth and the automation followed.
+This time it runs on `leaf1` only. You didn't touch Ansible, the playbook, or AWX. You changed your mind in the source of truth and the automation followed.
 
 When you're done, edit `leaf-devices-dc1` again, clear the **Status** filter, save, and run **Refresh Members**, so both devices are members again.
 
@@ -154,7 +154,7 @@ When you're done, edit `leaf-devices-dc1` again, clear the **Status** filter, sa
 | A new device means editing a file and pushing | A new device in Nautobot is just *there* |
 | "Which devices?" answered in Ansible | Answered in the source of truth |
 
-`inventory/static.ini` is now dead weight. **Lab 2 deletes `group_vars` too.**
+`inventory/static.ini` is now dead weight. Lab 2 deletes `group_vars` too**.**
 
 ---
 
