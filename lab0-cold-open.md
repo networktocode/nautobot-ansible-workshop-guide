@@ -83,7 +83,7 @@ It's just disconnected. The automation platform and the source of truth don't ta
 
 ## Where we're going
 
-Over the next three and a half hours, you'll take that apart piece by piece:
+Over the next four hours, you'll take that apart piece by piece:
 | Lab | What disappears |
 | --- | --- |
 | **1** | The static inventory file. Nautobot becomes the inventory. |

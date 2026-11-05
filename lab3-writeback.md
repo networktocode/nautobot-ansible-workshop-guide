@@ -1,6 +1,6 @@
 # Lab 3 — Execute and write state back
 
-**45 minutes.** Goal: reverse the flow. Until now, everything moved Nautobot → device. Now the device tells Nautobot what's actually true.
+**50 minutes.** Goal: reverse the flow. Until now, everything moved Nautobot → device. Now the device tells Nautobot what's actually true.
 
 By the end, you'll have launched automation from a device page in Nautobot, written discovered state back into the source of truth, and found the change log entry naming the job that caused it.
 
@@ -81,7 +81,7 @@ It gathers facts, then writes back:
 | --- | --- |
 | Serial number | `Device.serial` |
 | EOS version | `Device.software_version` |
-| LLDP neighbours | `lldp_neighbors` custom field |
+| LLDP neighbors | `lldp_neighbors` custom field |
 | The job that did it | `awx_job_id` custom field |
 
 ## 3e. 🤖 Nautobot — look at what changed

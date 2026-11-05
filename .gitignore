@@ -33,7 +33,7 @@ nimbalyst-local/
 # Nothing in this repo should ever hold a credential — the workshop's static
 # `admin`/`admin` literals are deliberate and documented, and everything else
 # belongs in nautobot-ansible-workshop-instructor. These patterns are a
-# backstop, not a licence to add one.
+# backstop, not a license to add one.
 .env
 .env.*
 *.token
