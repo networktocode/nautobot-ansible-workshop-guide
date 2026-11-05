@@ -24,6 +24,7 @@ That's this lab, and it's the reason the workshop exists.
 
 | Field | Value | Why |
 | --- | --- | --- |
+| **Enabled** | ☐ off | Nothing fires yet. You switch it on in 4d. |
 | **Object types** | `dcim.device` | Only device changes |
 | **Type update** | ✅ | Fires on edit, not on create or delete |
 | **URL** | AWX's workflow launch endpoint | `/api/v2/workflow_job_templates/N/launch/` |
@@ -88,11 +89,20 @@ Two things about that shape are deliberate:
 
 The arrows are **on success**. If node 1 decides this wasn't a turn-up, nobody gets asked to approve anything.
 
-## 4d. 🤖 Fire it
+## 4d. 🤖 Arm it, then fire it
+
+The webhook has been off all along, which is why nothing you did in Labs 1 to 3 started a workflow. Switch it on now, before you change anything:
+
+1. 🤖 **Extensibility → Webhooks → `device-status-change` → Edit**
+2. Tick **Enabled** → **Save**
+
+From this moment, every edit to a device sends an event to AWX. Now make one:
 
 🤖 **Devices → `leaf2` → Edit** → set **Status** to `Active` → **Save**.
 
 That's the whole trigger; a normal, boring edit that someone would make anyway. You didn't open AWX, you didn't run a command, you didn't fill in a form.
+
+> **Enable first, then edit.** An edit made while the webhook is off sends nothing, and it is not replayed later.
 
 ## 4e. ⚙️ Watch it start on its own
 
@@ -218,7 +228,8 @@ You'll see plenty of demos where a system detects drift and fixes it. That's rea
 
 | Where | Symptom | Likely cause |
 | --- | --- | --- |
-| ⚙️ | Nothing happens on status change | The webhook target or its token |
+| 🤖 | Nothing happens on status change | The webhook isn't **Enabled** (4d). Enable it, set `leaf2` back to `Planned` and save, then set it to `Active` again. The `Planned` edit starts a workflow that stops at node 1; that one is expected. |
+| ⚙️ | Still nothing, with the webhook enabled | The webhook target or its token — ask a proctor |
 | ⚙️ | A second workflow appears and fails at node 1 | Working as designed — that is the write-back echoing back through the webhook. |
 | ⚙️ | Approvals keep appearing after you approve | A loop. Node 1's status check is not running |
 | ⚙️ | Node 1 fails: *"is 'Planned', not 'Active'"* | Working as designed. The edit wasn't a turn-up. Set the status to `Active`. |
