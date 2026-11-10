@@ -1,6 +1,6 @@
 # Lab 2 — Variables and intent
 
-**45 minutes.** Goal: delete `group_vars` and let Nautobot hold the variables validated and fetched in a single query.
+**40 minutes.** Goal: delete `group_vars` and let Nautobot hold the variables validated and fetched in a single query.
 
 By the end, you'll have deleted the last local copy of your device data, watched Nautobot reject a bad value before it could reach a device, and rendered a full config from one GraphQL query.
 

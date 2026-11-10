@@ -96,12 +96,14 @@ graph LR
 
 | Time | Duration (min) | What |
 | --- | --- | --- |
-| 9:00–9:15 | 15 | **Cold open** — onboard a site the painful way |
-| 9:15–9:55 | 40 | **Lab 1** — Nautobot as your inventory |
-| 9:55–10:40 | 45 | **Lab 2** — variables and intent |
-| 10:40–10:55 | 15 | **Break** |
-| 10:55–11:45 | 50 | **Lab 3** — execute, and write state back |
-| 11:45–12:35 | 50 | **Lab 4** — event-driven, with an approval gate |
+| 9:00–9:05 | 5 | **Welcome** — what you will build and how the room works |
+| 9:05–9:15 | 10 | **Environment access** — open the desktop, Firefox, Nautobot, AWX, and a terminal |
+| 9:15–9:25 | 10 | **Lab 0** — onboard a site the painful way |
+| 9:25–10:05 | 40 | **Lab 1** — Nautobot as your inventory |
+| 10:05–10:45 | 40 | **Lab 2** — variables and intent |
+| 10:45–11:05 | 20 | **Break** |
+| 11:05–11:50 | 45 | **Lab 3** — execute, and write state back |
+| 11:50–12:35 | 45 | **Lab 4** — event-driven, with an approval gate |
 | 12:35–12:50 | 15 | **Wrapping up** — other tools worth a look, and Q&A |
 
 1. [Lab 0 — Cold open](./lab0-cold-open.md)

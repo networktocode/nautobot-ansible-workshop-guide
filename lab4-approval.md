@@ -1,6 +1,6 @@
 # Lab 4 — Event-driven, with an approval gate
 
-**50 minutes.** Goal: a change in Nautobot triggers automation, and a human approves it before anything touches a device.
+**45 minutes.** Goal: a change in Nautobot triggers automation, and a human approves it before anything touches a device.
 
 By the end, you'll have flipped a device's status in Nautobot, watched a workflow start on its own, approved it yourself, and found the whole story in the change log.
 

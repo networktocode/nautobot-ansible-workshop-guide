@@ -1,6 +1,6 @@
 # Lab 3 — Execute and write state back
 
-**50 minutes.** Goal: reverse the flow. Until now, everything moved Nautobot → device. Now the device tells Nautobot what's actually true.
+**45 minutes.** Goal: reverse the flow. Until now, everything moved Nautobot → device. Now the device tells Nautobot what's actually true.
 
 By the end, you'll have launched automation from a device page in Nautobot, written discovered state back into the source of truth, and found the change log entry naming the job that caused it.
 
