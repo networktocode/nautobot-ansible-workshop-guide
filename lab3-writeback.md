@@ -138,7 +138,7 @@ Lab 4 completes the circle: the *trigger* also becomes part of the record.
 
 **3. 💻 Extend the Job Button.** `jobs/launch_awx.py` looks up the template by name. Make it refuse to launch when the device's status isn't Active — validation before automation, which is the whole argument for a Job over a link.
 
-**4. 🤖 Add a second Job Button** for a different template, scoped to a different role.
+**4. 🤖 Add a second Job Button.** **Jobs → Job Buttons → Add**, pointing at the same `Launch AWX job for this device` Job, but make it look different: its own text, another color under **Button class**, and **Confirmation** ticked. Open `leaf1` and try both buttons. Both launch the same AWX template; what would it take for each to launch a different one?
 
 ---
 
