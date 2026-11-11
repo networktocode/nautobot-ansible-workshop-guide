@@ -143,7 +143,7 @@ Watch **Views → Jobs** for a moment after node 3 finishes. A second `Site Turn
 
 That is not a bug. It is the most important thing in this lab.
 
-Node 3 wrote state *back into Nautobot:* serial, software version, the custom fields. A device update is exactly what the webhook fires on**.** So the automation triggered itself:
+Node 3 wrote state *back into Nautobot:* serial, software version, the custom fields. A device update is exactly what the webhook fires on. So the automation triggered itself:
 
 ```
 status → Active ─→ webhook ─→ workflow ─→ approve ─→ write-back
@@ -153,7 +153,7 @@ status → Active ─→ webhook ─→ workflow ─→ approve ─→ write-bac
 
 Left alone, that is an infinite loop: approve once and you are asked to approve forever. It is the classic failure of event-driven automation, and it is easy to build by accident because every piece of it is individually reasonable.
 
-However, in our setup, Node 1 stops it**.** Open the failed one and read the message: the event changed the device, but it did not change the *status*, so this is an echo of our own write-back rather than a new turn-up. The webhook payload carries which fields actually moved, and node 1 checks.
+However, in our setup, Node 1 stops it. Open the failed one and read the message: the event changed the device, but it did not change the *status*, so this is an echo of our own write-back rather than a new turn-up. The webhook payload carries which fields actually moved, and node 1 checks.
 
 
 | The loop | Why |
@@ -161,7 +161,7 @@ However, in our setup, Node 1 stops it**.** Open the failed one and read the mes
 | **What makes it possible** | A webhook with no condition, firing on every update |
 | **What makes it stop** | The automation knowing what it itself just did |
 
-Notice where that knowledge lives. Not in Nautobot — it *can't* be, there's no condition field. It's in the first node of the workflow. An event-driven system needs somewhere to decide, and if the event source can't decide, the automation must**.** That's a design obligation, not a detail; skip it and you ship the loop.
+Notice where that knowledge lives. Not in Nautobot — it *can't* be, there's no condition field. It's in the first node of the workflow. An event-driven system needs somewhere to decide, and if the event source can't decide, the automation must. That's a design obligation, not a detail; skip it and you ship the loop.
 
 ## 4i. 🤖 The full story, in one place
 
@@ -214,7 +214,7 @@ You'll see plenty of demos where a system detects drift and fixes it. That's rea
 
 **1. ⚙️ Approval timeout.** The approval node waits indefinitely. Set its timeout to two minutes, trigger it, and let it expire. What state does the workflow end in, and is that what you'd want at 2am?
 
-**2. 🤖 Make it not fire.** Change `leaf2`'s description and save. The webhook fires anyway; watch node 1 stop the workflow. Then decide: is a failed node the right way to express "not interesting", or would you rather this never left Nautobot?
+**2. 🤖 Does every edit fire it?** Change `leaf2`'s description and save. The webhook fires anyway; watch node 1 stop the workflow. Then decide: is a failed node the right way to express "not interesting", or would you rather this never left Nautobot?
 
 **3. 🤖 Do it differently with a Job Hook.** Replace the webhook with a Job Hook which is a Nautobot Job that runs on change and decides in Python whether to call AWX at all. Lab 3's `jobs/launch_awx.py` is most of the code already.
 
