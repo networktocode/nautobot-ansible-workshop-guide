@@ -199,7 +199,7 @@ Two of the three copies are gone. Lab 3 reverses the flow entirely.
 
 **2. Tighten the schema.** Add a `pattern` requiring `snmp_community` to be at least 8 characters. Watch `public` become invalid.
 
-**3. Extend the query.** In GraphiQL, use the **Docs** panel (top right) to explore the schema. Add `tags`, or `interfaces { description }`. The docs panel is generated from the schema — it always matches your Nautobot.
+**3. Extend the query.** In GraphiQL, open the documentation explorer to browse the schema: it's the top icon in the narrow bar on the left of the query editor, above the history icon. Add `tags`, or `interfaces { description }`. The documentation explorer is generated from the schema so it always matches your Nautobot.
 
 **4. Add the new field to the template.** `templates/full_config.j2` renders from the query result. Add something you just pulled in, and re-run `render_intent.yml`.
 
